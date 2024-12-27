@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/vocabulary_quiz?currentSchema=public
+    username: root
+    password: root@123456
+    hikari:
+      connection-timeout: 2000
+      maximum-pool-size: 5
+  flyway:
+    table: flyway_schema_history_core
+    baseline-on-migrate: true
+    baseline-version: 0.0.0
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:9000/oauth2/jwks
+  quartz:
+    job-store-type: memory
+
+logging:
+  level:
+    root: debug

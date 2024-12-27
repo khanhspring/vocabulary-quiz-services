@@ -1,0 +1,243 @@
+:root {
+	--font-family: Inter,Helvetica,sans-serif;
+	--body-bg: #F9FAFB;
+}
+
+* {
+	font-family: var(--font-family);
+	color: #181C32;
+	box-sizing: border-box;
+}
+body {
+	margin: 0;
+	background: url("/images/auth-bg.png") no-repeat center center;
+	background-size: cover;
+	min-height: 100vh;
+}
+
+body::before {
+	content: "";
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	z-index: -1;
+}
+.spinner {
+	display: inline-block;
+	border: 2px solid #f3f3f3; /* Light grey */
+	border-top: 2px solid #3498db; /* Blue */
+	border-radius: 50%;
+	width: 15px;
+	height: 15px;
+	animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: rotate(0deg); }
+	100% { transform: rotate(360deg); }
+}
+
+.text-center {
+	text-align: center;
+}
+
+.login-page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+
+.login-header {
+	text-align: center;
+	margin-bottom: 30px;
+}
+.login-header a img {
+	width: 57px;
+}
+
+.login-form-wrapper {
+	flex: 1;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.login-form {
+	max-width: 420px;
+	width: 100%;
+	background: #fff;
+	padding: 32px;
+	border-radius: 7px;
+}
+.form-title {
+	margin-bottom: 30px;
+	padding-top: 10px;
+}
+.form-title h1 {
+	margin-top: 0;
+	margin-bottom: 20px;
+	font-size: 25px;
+	color: #181c32;
+}
+.form-title .create-account-title {
+	color: #7e8299;
+	font-size: 14px;
+	font-weight: 600;
+}
+.form-title .create-account-title a {
+	color: #0284c7;
+	text-decoration: none;
+}
+.form-title .create-account-title a:hover {
+	color: #0ea5e9;
+}
+
+
+.form-messages .alert{
+	width: 100%;
+	margin-bottom: 23px;
+	font-size: 13px;
+	color: #181C32;
+	padding: 14px 20px;
+	border-radius: 3px;
+}
+.form-messages .alert-danger{
+	background: #F7D9E3;
+}
+.form-messages .alert-success{
+	background: #CBF0F4;
+}
+
+.form-group {
+	margin-bottom: 25px;
+}
+
+.form-label-row{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.form-label-row a {
+	margin-bottom: 7px;
+	color: #0284c7;
+	text-decoration: none;
+	font-size: 13px;
+}
+.form-label-row a:hover {
+	color: #0ea5e9
+}
+.form-label {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: bold;
+	margin-bottom: 7px;
+}
+.form-control {
+	display: block;
+	box-shadow: none;
+	width: 100%;
+	line-height: 1.5;
+	background-clip: padding-box;
+	border: 1px solid #E4E6EF;
+	appearance: none;
+	padding: 8px 15px;
+	font-size: 14px;
+	border-radius: 7px;
+	outline: none;
+}
+
+.or-label {
+	margin-bottom: 17px;
+	color: #A1A5B7;
+	text-transform: uppercase;
+	font-size: 13px;
+}
+
+.btn {
+	display: flex;
+	justify-content: center;
+	gap: 12px;
+	align-items: center;
+	padding: 0 15px;
+	line-height: 40px;
+	width: 100%;
+	border-radius: 5px;
+	font-size: 14px;
+	border: none;
+	cursor: pointer;
+	background: #1d4ed8;
+	color: #fff;
+	margin-bottom: 17px;
+	transition: background-color 0.2s;
+}
+.btn:hover {
+	background: #0284c7;
+}
+.btn span {
+	color: #fff;
+}
+
+a.btn {
+	text-decoration: none;
+}
+
+.btn img {
+	height: 16px;
+}
+.btn-submit {
+	margin-top: 30px;
+}
+
+.btn-submit .indicator-label{
+	display: block;
+}
+.btn-submit .indicator-progress{
+	display: none;
+}
+.btn-submit.loading .indicator-label{
+	display: none;
+}
+.btn-submit.loading .indicator-progress{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap:  10px;
+}
+.btn-social {
+	background: rgba(241, 245, 249, 1);
+	border: 1px solid rgb(15 23 42 / 0.1);
+	color: #0f172a;
+}
+.btn-social:hover {
+	background: #EFF2F5;
+}
+
+
+.login-footer {
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.login-footer-content {
+	margin: auto;
+	max-width: 400px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 7px;
+	font-size: 14px;
+}
+.login-footer-content a {
+	text-decoration: none;
+	transition: 0.1s;
+	color: #fff;
+}
+.login-footer-content span {
+	color: #fff;
+}
+.login-footer-content a:hover {
+	color: #2563eb;
+}

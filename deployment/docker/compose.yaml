@@ -1,0 +1,57 @@
+services:
+  postgres:
+    image: postgres:16.6
+    container_name: quiz-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root@123456
+    volumes:
+      - quiz-postgres-vol:/var/lib/postgresql/data
+      - ./postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: 'bitnami/redis:latest'
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - '6379:6379'
+
+  kafka:
+    image: 'bitnami/kafka:latest'
+    environment:
+      - KAFKA_CFG_NODE_ID=0
+      - KAFKA_CFG_PROCESS_ROLES=controller,broker
+      - KAFKA_CFG_LISTENERS=PLAINTEXT://:9092,CONTROLLER://:9093
+      - KAFKA_CFG_LISTENER_SECURITY_PROTOCOL_MAP=CONTROLLER:PLAINTEXT,PLAINTEXT:PLAINTEXT
+      - KAFKA_CFG_CONTROLLER_QUORUM_VOTERS=0@kafka:9093
+      - KAFKA_CFG_CONTROLLER_LISTENER_NAMES=CONTROLLER
+    ports:
+      - '9092:9092'
+
+  auth-server:
+    image: auth-server
+    build:
+      context: ../../auth-server
+    environment:
+      ACTIVE_PROFILE: local
+    ports:
+      - "9000:9000"
+
+  quiz-registration-service:
+    image: quiz-registration-service
+    build:
+      context: ../../quiz-registration-service
+    environment:
+      ACTIVE_PROFILE: local
+    ports:
+      - "8090:8090"
+
+volumes:
+  quiz-postgres-vol:

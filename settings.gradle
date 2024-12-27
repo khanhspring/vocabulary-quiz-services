@@ -1,0 +1,3 @@
+rootProject.name = 'vocabulary-quiz-services'
+
+include("auth-server", "quiz-registration-service", "vocabulary-quiz-service")

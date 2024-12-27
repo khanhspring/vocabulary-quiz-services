@@ -1,0 +1,25 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/vocabulary_quiz?currentSchema=public
+    username: root
+    password: root@123456
+    hikari:
+      connection-timeout: 5000
+      maximum-pool-size: 5
+  flyway:
+    table: flyway_schema_history_auth
+
+  thymeleaf:
+    cache: false
+    mode: HTML
+    encoding: UTF-8
+    prefix: classpath:/templates/
+  web:
+    resources:
+      static-locations: classpath:/static/
+      cache:
+        period: 0
+
+logging:
+  level:
+    root: debug
